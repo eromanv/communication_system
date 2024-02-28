@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+</head>
+<body>
+    <h1>User Feedback</h1>
+
+    <h2>Submit Feedback</h2>
+    <form method="post" action="/feedback/">
+        <label for="description">Feedback Description:</label><br>
+        <textarea id="description" name="description" rows="4" cols="50" required></textarea><br>
+        <button type="submit">Submit Feedback</button>
+    </form>
+
+    <h2>Previous Feedback</h2>
+    {% if feedback %}
+        <ul>
+            {% for entry in feedback %}
+                <li>{{ entry.description }} - {{ entry.created_at }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No feedback available</p>
+    {% endif %}
+</body>
+</html>
